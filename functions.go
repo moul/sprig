@@ -108,8 +108,12 @@ File Paths:
 	- isAbs: https://golang.org/pkg/path#IsAbs
 
 Encoding:
+        - b32enc: Encode a string into a Base32 string
+        - b32dec: Decode a string from a Base32 string
 	- b64enc: Base 64 encode a string.
 	- b64dec: Base 64 decode a string.
+        - json: Marshals the input as JSON
+        - jsonindent: Marshals the input as JSON with indentation
 
 Reflection:
 
@@ -188,6 +192,7 @@ import (
 	"encoding/base32"
 	"encoding/base64"
 	"encoding/hex"
+	"encoding/json"
 	"encoding/pem"
 	"fmt"
 	"html/template"
@@ -387,10 +392,12 @@ var genericMap = map[string]interface{}{
 	"isAbs": path.IsAbs,
 
 	// Encoding:
-	"b64enc": base64encode,
-	"b64dec": base64decode,
-	"b32enc": base32encode,
-	"b32dec": base32decode,
+	"b64enc":     base64encode,
+	"b64dec":     base64decode,
+	"b32enc":     base32encode,
+	"b32dec":     base32decode,
+	"json":       jsonMarshal,
+	"jsonindent": jsonMarshalIndent,
 
 	// Data Structures:
 	"tuple":  tuple,
@@ -404,6 +411,16 @@ var genericMap = map[string]interface{}{
 
 	// UUIDs:
 	"uuidv4": uuidv4,
+}
+
+func jsonMarshal(v interface{}) string {
+	output, _ := json.Marshal(v)
+	return string(output)
+}
+
+func jsonMarshalIndent(v interface{}) string {
+	output, _ := json.MarshalIndent(v, "", "  ")
+	return string(output)
 }
 
 func split(sep, orig string) map[string]string {

@@ -153,6 +153,8 @@ parse, it returns the time unaltered. See `time.ParseDuration` for info on durat
 - b32dec: Decode a string from a Base32 string
 - b64enc: Encode a string into a Base64 string
 - b64dec: Decode a string from a Base64 string
+- json: Marshals the input as JSON
+- jsonindent: Marshals the input as JSON with indentation
 
 ### Data Structures:
 

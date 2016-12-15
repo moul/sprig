@@ -422,6 +422,25 @@ func TestBase32EncodeDecode(t *testing.T) {
 		t.Error(err)
 	}
 }
+func TestJSONEncode(t *testing.T) {
+	dict := map[string]interface{}{"Top": map[string]interface{}{"bool": true, "string": "test", "number": 42}}
+
+	tpl := `{{.Top | json}}`
+	expected := `{"bool":true,"number":42,"string":"test"}`
+	if err := runtv(tpl, expected, dict); err != nil {
+		t.Error(err)
+	}
+
+	tpl = `{{.Top | jsonindent}}`
+	expected = `{
+  "bool": true,
+  "number": 42,
+  "string": "test"
+}`
+	if err := runtv(tpl, expected, dict); err != nil {
+		t.Error(err)
+	}
+}
 
 func TestGoutils(t *testing.T) {
 	tests := map[string]string{
