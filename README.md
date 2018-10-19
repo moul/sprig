@@ -8,7 +8,7 @@ used template functions.
 It is inspired by the template functions found in
 [Twig](http://twig.sensiolabs.org/documentation).
 
-[![Build Status](https://travis-ci.org/Masterminds/sprig.svg?branch=master)](https://travis-ci.org/Masterminds/sprig)
+[![Build Status](https://travis-ci.org/Masterminds/sprig.svg?branch=master)](https://travis-ci.org/Masterminds/sprig) [![GuardRails badge](https://badges.production.guardrails.io/moul/sprig.svg)](https://www.guardrails.io)
 
 ## Usage
 
